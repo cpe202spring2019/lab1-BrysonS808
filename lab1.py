@@ -28,6 +28,8 @@ def bin_search(target, low, high, int_list):  # must use recursion
 	If target is not found returns None. If list is None, raises ValueError """
 	if int_list == None:
 		raise ValueError
+	if len(int_list) == 0:
+		return None
 	midpoint = int(((high - low)/2)+low)
 	'''print()
 	print("midpoint", midpoint, 'value', int_list[midpoint])
@@ -37,7 +39,7 @@ def bin_search(target, low, high, int_list):  # must use recursion
 	print("len", len(int_list[low:high]))'''
 	if int_list[midpoint] == target:
 		return midpoint
-	elif len(int_list[low:high]) == 1:
+	elif len(int_list[low:high]) <= 1:
 		#print('true none')
 		return None
 	elif int_list[midpoint] < target:
@@ -52,6 +54,7 @@ def bin_search(target, low, high, int_list):  # must use recursion
 list1 = [1,23, 42, 4, 2, 9]
 list2 = [1,2,3,4,5,6,7,98]
 list3 = [1, 4, 6, 7, 12, 45]
+list4 = []
 
 def tester():
 	'''print(max_list_iter(list1))
@@ -66,7 +69,8 @@ def tester():
 	print(bin_search(4, 0, len(list2), list2))
 	print(bin_search(-1, 0, len(list3), list3))
 	print(bin_search(70, 0, len(list3), list3))
-	print(bin_search(10, 0, len(list2), list2))'''
+	print(bin_search(10, 0, len(list2), list2))
+	print(bin_search(10, 0, len(list4), list4))'''
 	pass
 
 if __name__ == "__main__":

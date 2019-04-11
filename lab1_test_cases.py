@@ -4,6 +4,9 @@ from lab1 import *
 list1 = [1,23, 42, 4, 2, 9]
 list2 = [1,2,3,4,5,6,7,98]
 list3 = [1, 4, 6, 7, 12, 45]
+list4 = []
+list5 = [3]
+list6 = [4,4,3]
 
  # A few test cases.  Add more!!!
 class TestLab1(unittest.TestCase):
@@ -18,6 +21,9 @@ class TestLab1(unittest.TestCase):
         self.assertEqual(max_list_iter(list1), 42)
         self.assertEqual(max_list_iter(list2), 98)
         self.assertEqual(max_list_iter(list3), 45)
+        self.assertEqual(max_list_iter(list6), 4)
+        self.assertEqual(max_list_iter(list4), None)
+        self.assertEqual(max_list_iter(list5), 3)
 
     def test_reverse_rec(self):
         ''' tests to see if the function properly reverses the lists '''
@@ -26,6 +32,8 @@ class TestLab1(unittest.TestCase):
         self.assertEqual(reverse_rec(list2), [98,7,6,5,4,3,2,1])
         self.assertEqual(reverse_rec(list3), [45,12,7,6,4,1])
         self.assertEqual(reverse_rec([]), [])
+        self.assertEqual(reverse_rec(list6), [3,4,4])
+        self.assertEqual(reverse_rec(list5), [3])
         with self.assertRaises(ValueError):
             reverse_rec(None)
 
@@ -40,6 +48,11 @@ class TestLab1(unittest.TestCase):
         self.assertEqual(bin_search(-1, 0, len(list3), list3), None)
         self.assertEqual(bin_search(7, 0, len(list3), list3), 3)
         self.assertEqual(bin_search(98, 0, len(list2), list2), 7)
+        self.assertEqual(bin_search(3, 0, len(list4), list4), None)
+        self.assertEqual(bin_search(3, 0, len(list5), list5), 0)
+        self.assertEqual(bin_search(2, 0, len(list5), list5), None)
+        with self.assertRaises(ValueError):
+            bin_search(4,0,0, None)
 
 
 if __name__ == "__main__":
